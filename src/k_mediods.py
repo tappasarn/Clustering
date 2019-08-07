@@ -16,7 +16,7 @@ MEDIODS_NUMBER = 2
 input_arr = input_reader.read_csv_input('')
 
 # input_arr.shape[0] return number of row
-# input_arr.shapep[1] return number of columns
+# input_arr.shape[1] return number of columns
 data_size, feature_size = input_arr.shape
 
 # crate pair wise table so we will not have to do it all the time
