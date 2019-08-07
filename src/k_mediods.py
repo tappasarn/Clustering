@@ -49,8 +49,7 @@ while not np.array_equal(mediods_row_index_prev, mediods_row_index_current):
         # Get pair distance for the indices
         clusters_pair_distance_arr = pair_wise_distance[np.ix_(indices, indices)]
 
-        # find the index of minimum sum row
-        #min_sum_index = np.argmin(np.sum(clusters_pair_distance_arr,axis=1))
+        # find the index of minimum mean row
         min_sum_index = np.argmin(np.mean(clusters_pair_distance_arr,axis=1))
         mediods_row_index_current[i] = indices[min_sum_index]
 
