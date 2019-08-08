@@ -57,15 +57,18 @@ while not np.array_equal(mediods_row_index_prev, mediods_row_index_current):
     # Get new clusters
     clusters = cluster.get_cluster(input_arr, data_size, MEDIODS_NUMBER, feature_size, mediods_row_index_current, pair_wise_distance)
     
-print('final mediods: ', mediods_row_index_current)
+print('Final Mediods: ', mediods_row_index_current)
+print('-----------------------------------------')
+print('Final Clusters: ', cluster)
+print('=========================================')
 
-result = []
-for i in range(MEDIODS_NUMBER):
-    result.append(np.where(clusters == i)[0])
+# result = []
+# for i in range(MEDIODS_NUMBER):
+#     result.append(np.where(clusters == i)[0])
 
-file = open('cluster_members_idx.txt', 'w')
-for line in result:
-    file.write(",".join([str(x) for x in line]))
-    file.write('\n')
-file.close()
+# file = open('cluster_members_idx.txt', 'w')
+# for line in result:
+#     file.write(",".join([str(x) for x in line]))
+#     file.write('\n')
+# file.close()
 
