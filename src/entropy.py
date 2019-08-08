@@ -4,7 +4,7 @@ This module is use for entropy calculation
 import numpy as np
 import math
 
-def calculate_entropy_simple(data, nCategories, labels):
+def calculate_entropy_simple(data, labels):
     number_of_features = data.shape[1]
     unique_labels = np.unique(labels)
     number_of_cluster = len(unique_labels)
