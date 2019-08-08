@@ -29,7 +29,7 @@ def calculate(number_of_mediods, input_file_path):
 
     # Select ramdom indices for initial representation object == mediods_number
     mediods_row_index_init = np.random.choice(data_size, MEDIODS_NUMBER, replace=False)
-    # mediods_row_index_init = np.array([196, 244])
+    # mediods_row_index_init = np.array([426, 550, 515, 9, 432, 854])
 
     clusters = cluster.get_cluster(input_arr, data_size, MEDIODS_NUMBER, feature_size, mediods_row_index_init, pair_wise_distance)
 
@@ -59,40 +59,10 @@ def calculate(number_of_mediods, input_file_path):
         # Get new clusters
         clusters = cluster.get_cluster(input_arr, data_size, MEDIODS_NUMBER, feature_size, mediods_row_index_current, pair_wise_distance)
         
-    print('final mediods: ', mediods_row_index_current)
+    print('Final Mediods: ', mediods_row_index_current)
+    print('--------------------------------------------')
+    print('Final Clusters: ', clusters)
+    print('============================================')
 
-    result = []
-
-    for i in range(MEDIODS_NUMBER):
-        # Get index where value is equal to i
-        # .where returns tuple so we need [0] here
-        indices = np.where(clusters == i)[0]
-
-        # Find new mediods
-        # Get pair distance for the indices
-        clusters_pair_distance_arr = pair_wise_distance[np.ix_(indices, indices)]
-
-        # find the index of minimum mean row
-        min_sum_index = np.argmin(np.mean(clusters_pair_distance_arr,axis=1))
-        mediods_row_index_current[i] = indices[min_sum_index]
-
-    # We have new mediods
-    # Get new clusters
-    clusters = cluster.get_cluster(input_arr, data_size, MEDIODS_NUMBER, feature_size, mediods_row_index_current, pair_wise_distance)
-    
-print('Final Mediods: ', mediods_row_index_current)
-print('-----------------------------------------')
-print('Final Clusters: ', cluster)
-print('=========================================')
-
-# result = []
-# for i in range(MEDIODS_NUMBER):
-#     result.append(np.where(clusters == i)[0])
-
-# file = open('cluster_members_idx.txt', 'w')
-# for line in result:
-#     file.write(",".join([str(x) for x in line]))
-#     file.write('\n')
-# file.close()
-
+    return clusters
 
