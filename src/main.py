@@ -12,7 +12,7 @@ INPUT_FILE_PATH = '../data/random_1000_5.txt'
 data = input_reader.read_csv_input(INPUT_FILE_PATH)
 
 # K-Medoids algorithm
-labels = kmedoids.calculate(data, NUMBER_OF_CLUSTER)
+labels = kmedoids.calculate(data, NUMBER_OF_CLUSTER)[0]
 total_entropy = entropy.calculate_entropy_simple(data, labels)
 print('total kmedoids entropy: ', total_entropy)
 

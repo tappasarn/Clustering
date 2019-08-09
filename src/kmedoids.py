@@ -5,7 +5,7 @@ K-Medoids uses 'K' MOST CENTRALLY LOCATED object as reference points
 """
 import input_reader
 import numpy as np
-import cluster
+import kmedoids_cluster
 import pairwise_calculation
 from sklearn.metrics.pairwise import pairwise_distances
 
@@ -24,7 +24,7 @@ def calculate(data, number_of_medoids):
     medoids_row_index_init = np.random.choice(data_size, number_of_medoids, replace=False)
     # medoids_row_index_init = np.array([426, 550, 515, 9, 432, 854])
 
-    clusters = cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_init, pair_wise_distance)
+    clusters = kmedoids_cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_init, pair_wise_distance)
 
     # Find new medoids from the clusters until medoids do not change any more
     medoids_row_index_prev = medoids_row_index_init
@@ -50,7 +50,7 @@ def calculate(data, number_of_medoids):
 
         # We have new medoids
         # Get new clusters
-        clusters = cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_current, pair_wise_distance)
+        clusters = kmedoids_cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_current, pair_wise_distance)
         
     return (clusters, medoids_row_index_current)
 
