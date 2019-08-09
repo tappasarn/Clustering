@@ -14,7 +14,7 @@ Therefore, variable names are a bit long and there are some optimization tradeof
         * total entropy: the number of entropy amount
         * final medoids: 1-dimention array contain index of final mediods that create the final cluster
 
-2) Randomize
+2) randomize
     * *Arguments:*
         * n-dimention numpy array
         * number_of_mediods
