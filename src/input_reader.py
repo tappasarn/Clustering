@@ -3,6 +3,7 @@ This module is a wrapper for csv input reader
 It returns data which read from csv file as NumPy Array
 """
 import pandas as pd
+import numpy as np
 
 def read_csv_input(file_name):
     # Read data from file
