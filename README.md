@@ -1,29 +1,48 @@
-# K-Mediods
+# Clustering
 
-This is a source code for Python implementation of K-Mediods algorithm.
+This library contains a set of clustering algorithms implemented in Python.
+The intention of this library is to make the code very easy to read and maintain.
+Therefore, variable names are a bit long and there are some optimization tradeoff.
 
-## Distance
-For this module, the distance calculation will base on hamming algorithm.
+## APIs
+1) kmedoids
+    * Arguments:
+        * n-dimention numpy array
+        * number_of_mediods
+    * *Returns:* a tuple of following
+        * labels: 1-dimention array contains index of clustes that each element reside in
+        * total entropy: the number of entropy amount
+        * final medoids: 1-dimention array contain index of final mediods that create the final cluster
 
-## API
-* Calculation : takes number of cluster (mediods) and a string for input file path
+2) Randomize
+    * *Arguments:*
+        * n-dimention numpy array
+        * number_of_mediods
+    * *Returns:* a tuple of following
+        * labels: 1-dimention array contains index of clustes that each element reside in
+        * total entropy: the number of entropy amount
+        * None
 
-## Input
-* number_of_mediods: int
-* input_file_path: string
 
-## Output
-When the computation is finished. The indices of the data will be printed to a text file called `cluster_members_idx`
-Each cluster as the results will be separated by `\n` (next line)
+## How to use
+You just need to import `clustering` into your file. Then, you get to enjoy the APIs it provides.
 
-## To run
-1) Create a main file
-2) import `k_mediods` module
-3) supply needed inputs for `calucation` api
-3) run !
+### Example
+```py
+import clustering
+import input_reader
+import numpy as np
 
-## TODO
-1) Support multiple distance calculation algorithm
-2) Optimize performance
+NUMBER_OF_CLUSTER = 6
+INPUT_FILE_PATH = '../data/random_1000_5.txt'
 
-*I try to make this code easy to read. Therefore, variable names are a bit long. Moreover, the code in here is not optimize to conserve the readability*
+data = input_reader.read_csv_input(INPUT_FILE_PATH)
+
+# K-Medoids algorithm
+labels, total_entropy, final_centroids = clustering.kmedoids(data, NUMBER_OF_CLUSTER)
+print('total kmedoids entropy: ', total_entropy)
+
+# Random
+labels, total_entropy, final_centroids = clustering.randomize(data, NUMBER_OF_CLUSTER)
+print('total random entropy: ', total_entropy)
+```

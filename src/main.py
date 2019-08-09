@@ -1,16 +1,19 @@
 """
 Project main file
 """
-import k_mediods
-import entropy
+import clustering
 import input_reader
+import numpy as np
 
 NUMBER_OF_CLUSTER = 6
 INPUT_FILE_PATH = '../data/random_1000_5.txt'
 
 data = input_reader.read_csv_input(INPUT_FILE_PATH)
-label = k_mediods.calculate(NUMBER_OF_CLUSTER, INPUT_FILE_PATH)
 
-total_entropy = entropy.calculate_entropy_simple(data, label)
+# K-Medoids algorithm
+labels, total_entropy, final_centroids = clustering.kmedoids(data, NUMBER_OF_CLUSTER)
+print('total kmedoids entropy: ', total_entropy)
 
-print('total entropy: ', total_entropy)
+# Random
+labels, total_entropy, final_centroids = clustering.randomize(data, NUMBER_OF_CLUSTER)
+print('total random entropy: ', total_entropy)
