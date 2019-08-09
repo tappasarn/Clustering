@@ -11,21 +11,18 @@ def read_csv_input(file_name):
 
     # encode all input types to interger so that it is in a generic form
     # for distance calculation
-    return df.values
-    # return _encode_string_input_to_integer(df.values)
+    # return df.values
+    return _encode_string_input_to_integer(df.values)
 
-def _encode_string_input_to_integer(input_arr):
-    num_data, num_features = input_arr.shape
-    num_categories = []
+def _encode_string_input_to_integer(data):
+    num_data, num_features = data.shape
     transformed_data = np.zeros((num_data, num_features))
-    for i in range(num_categories):
-        one_column = input_arr[:,i]
-        uq_values = np.unique(one_column) 
-        num_categories[i] = len(uq_values)
-        temp = []
-        for j in range(uq_values):
-            idx = np.where(one_column==uq_values[j])[0]
-            temp = np.array(one_column)
+    for i in range(num_features):
+        single_column = data[:,i]
+        uq_values_in_col = np.unique(single_column) 
+        temp = np.array(single_column)
+        for j in range(len(uq_values_in_col)):
+            idx = np.where(single_column == uq_values_in_col[j])[0]
             temp[idx] = j
         transformed_data[:,i] = temp
     
