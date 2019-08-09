@@ -26,4 +26,4 @@ def _encode_string_input_to_integer(data):
             temp[idx] = j
         transformed_data[:,i] = temp
     
-    return transformed_data
+    return transformed_data.astype(int)
