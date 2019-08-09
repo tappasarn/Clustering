@@ -1,9 +1,8 @@
 """
-This module job is to calculate K-Medoids
+This module calculates clusters by using K-Medoids algorithm
 
 K-Medoids uses 'K' MOST CENTRALLY LOCATED object as reference points
 """
-import input_reader
 import numpy as np
 import kmedoids_cluster
 import pairwise_calculation
