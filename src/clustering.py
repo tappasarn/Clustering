@@ -7,6 +7,7 @@ import entropy
 import kmedoids_core
 import randomize_core
 import kmodes_core
+import khistogram_core
 
 def kmedoids(data, NUMBER_OF_CLUSTER):
     labels, final_medoids = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
@@ -25,4 +26,10 @@ def kmodes(data, NUMBER_OF_CLUSTER):
     total_entropy = entropy.calculate_entropy_simple(data, labels)
 
     return (labels, total_entropy, None)
+
+def khistogram(data, NUMBER_OF_CLUSTER):
+    labels, final_histogram = khistogram_core.calculate(data, NUMBER_OF_CLUSTER)
+    total_entropy = entropy.calculate_entropy_simple(data, labels)
+
+    return (labels, total_entropy, final_histogram)  
 
