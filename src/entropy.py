@@ -48,7 +48,11 @@ def calculate_entropy_simple(data, labels):
                 m = len(np.where(temp == unique_vals[k])[0])
                 p = m/n
                 cluster_entropies[i] = cluster_entropies[i] - p * math.log(p)
+        cluster_entropies[i] = cluster_entropies[i] * len(idx[0])
+
     for i in range(number_of_cluster):
         total_entropy = total_entropy + cluster_entropies[i]
+
+    total_entropy = total_entropy / data.shape[0]
 
     return total_entropy
