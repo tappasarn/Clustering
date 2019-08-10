@@ -22,10 +22,10 @@ def randomize(data, NUMBER_OF_CLUSTER):
     return (labels, total_entropy, None)
 
 def kmodes(data, NUMBER_OF_CLUSTER):
-    labels, modes_row_current = kmodes_core.calculate(data, NUMBER_OF_CLUSTER)
+    labels, final_mode = kmodes_core.calculate(data, NUMBER_OF_CLUSTER)
     total_entropy = entropy.calculate_entropy_simple(data, labels)
 
-    return (labels, total_entropy, None)
+    return (labels, total_entropy, final_mode)
 
 def khistogram(data, NUMBER_OF_CLUSTER):
     labels, final_histogram = khistogram_core.calculate(data, NUMBER_OF_CLUSTER)
