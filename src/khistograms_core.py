@@ -2,7 +2,7 @@
 This module calculates clusters by using K-Histogram algorithm
 """
 import numpy as np
-import khistogram_cluster
+import khistograms_cluster
 import randomize_core
 
 def _get_data_per_cluster(cluster_idx, clusters, data):
@@ -53,7 +53,7 @@ def calculate(data, number_of_histogram):
     histogram_current = histograms
     while not _are_equal(histogram_prev, histogram_current):
         # re-cluster
-        clusters = khistogram_cluster.get_cluster(data, data_size, number_of_histogram, feature_size, histogram_current)
+        clusters = khistograms_cluster.get_cluster(data, data_size, number_of_histogram, feature_size, histogram_current)
         histogram_prev = histogram_current
         histogram_current = _get_histogram(number_of_histogram, clusters, data, feature_size)
     

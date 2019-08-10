@@ -21,5 +21,5 @@ elif CLUSTEING_METHOD == 'KMODES':
     labels, total_entropy, final_centroids = clustering.kmodes(data, NUMBER_OF_CLUSTER)
     print('total kmode entropy: ', total_entropy)
 elif CLUSTEING_METHOD == 'KHISTOGRAMS':
-    labels, total_entropy, final_centroids = clustering.khistogram(data, NUMBER_OF_CLUSTER)
+    labels, total_entropy, final_centroids = clustering.khistograms(data, NUMBER_OF_CLUSTER)
     print('total khistogram entropy: ', total_entropy)  
