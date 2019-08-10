@@ -6,7 +6,7 @@ import input_reader
 
 # parameters
 NUMBER_OF_CLUSTER = 6
-CLUSTEING_METHOD = 'KMODES'
+CLUSTEING_METHOD = 'RANDOM'
 INPUT_FILE_PATH = '../data/random_1000_5.txt'
 
 data = input_reader.read_csv_input(INPUT_FILE_PATH)
@@ -19,4 +19,7 @@ elif CLUSTEING_METHOD == 'RANDOM':
     print('total random entropy: ', total_entropy)
 elif CLUSTEING_METHOD == 'KMODES':
     labels, total_entropy, final_centroids = clustering.kmodes(data, NUMBER_OF_CLUSTER)
-    print('total random entropy: ', total_entropy)
+    print('total kmode entropy: ', total_entropy)
+elif CLUSTEING_METHOD == 'KHISTOGRAM':
+    labels, total_entropy, final_centroids = clustering.khistogram(data, NUMBER_OF_CLUSTER)
+    print('total khistogram entropy: ', total_entropy)  
