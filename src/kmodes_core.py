@@ -1,7 +1,5 @@
 """
-This module calculates clusters by using K-Medoids algorithm
-
-K-Medoids uses 'K' MOST CENTRALLY LOCATED object as reference points
+This module calculates clusters by using K-Mode algorithm
 """
 import numpy as np
 import kmodes_cluster
