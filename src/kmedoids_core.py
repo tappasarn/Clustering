@@ -14,7 +14,7 @@ def calculate(data, number_of_medoids):
     data_size, feature_size = data.shape
 
     # crate pair wise table so we will not have to do it all the time
-    pair_wise_distance = pairwise_calculation.calculate(data)
+    pair_wise_distance = pairwise_calculation.calculate_custom(data, 'Jaccard')
 
     if number_of_medoids > data_size:
         raise Exception('Number of medoids is more than data size')

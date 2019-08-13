@@ -8,28 +8,33 @@ import kmedoids_core
 import randomize_core
 import kmodes_core
 import khistograms_core
+import silhouette
 
 def kmedoids(data, NUMBER_OF_CLUSTER):
     labels, final_medoids = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
-    total_entropy = entropy.calculate_entropy_simple(data, labels)
+    # total_entropy = entropy.calculate_entropy_simple(data, labels)
+    sc = silhouette.calculate(data, labels)
 
-    return (labels, total_entropy, final_medoids)
+    return (labels, 0, final_medoids, sc)
 
 def randomize(data, NUMBER_OF_CLUSTER):
     labels = randomize_core.calculate(data, NUMBER_OF_CLUSTER)
     total_entropy = entropy.calculate_entropy_simple(data, labels)
-    
-    return (labels, total_entropy, None)
+    sc = silhouette.calculate(data, labels)
+
+    return (labels, total_entropy, None, sc)
 
 def kmodes(data, NUMBER_OF_CLUSTER):
     labels, final_mode = kmodes_core.calculate(data, NUMBER_OF_CLUSTER)
     total_entropy = entropy.calculate_entropy_simple(data, labels)
+    sc = silhouette.calculate(data, labels)
 
-    return (labels, total_entropy, final_mode)
+    return (labels, total_entropy, final_mode, sc)
 
 def khistograms(data, NUMBER_OF_CLUSTER):
     labels, final_histogram = khistograms_core.calculate(data, NUMBER_OF_CLUSTER)
     total_entropy = entropy.calculate_entropy_simple(data, labels)
+    sc = silhouette.calculate(data, labels)
 
-    return (labels, total_entropy, final_histogram)  
+    return (labels, total_entropy, final_histogram, sc)  
 

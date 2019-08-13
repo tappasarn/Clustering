@@ -11,8 +11,8 @@ def read_csv_input(file_name):
 
     # encode all input types to interger so that it is in a generic form
     # for distance calculation
-    # return df.values
-    return _encode_string_input_to_integer(df.values)
+    return df.values
+    # return _encode_string_input_to_integer(df.values)
 
 def _encode_string_input_to_integer(data):
     num_data, num_features = data.shape
