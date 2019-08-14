@@ -4,15 +4,12 @@ It returns data which read from csv file as NumPy Array
 """
 import pandas as pd
 import numpy as np
+import input_transformer
 
 def read_csv_input(file_name):
     # Read data from file
     df = pd.read_csv(file_name, sep=',',header=None)
-
-    # encode all input types to interger so that it is in a generic form
-    # for distance calculation
-    # return df.values
-    return _encode_string_input_to_integer(df.values)
+    return input_transformer.transformed_data(df.values)
 
 def _encode_string_input_to_integer(data):
     num_data, num_features = data.shape
