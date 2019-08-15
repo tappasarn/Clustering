@@ -51,5 +51,5 @@ def calculate(data, number_of_medoids):
         # Get new clusters
         clusters = kmedoids_cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_current, pair_wise_distance)
         
-    return (clusters, medoids_row_index_current)
+    return (clusters, medoids_row_index_current, medoids_row_index_init)
 

@@ -5,4 +5,4 @@ import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
 
 def calculate(input):
-    return pairwise_distances(input, metric='hamming')
+    return pairwise_distances(input, metric='jaccard')
