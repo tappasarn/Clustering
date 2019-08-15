@@ -10,8 +10,8 @@ import kmodes_core
 import khistograms_core
 
 def kmedoids(data, NUMBER_OF_CLUSTER):
-    labels, final_medoids = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
-    return (labels, final_medoids)
+    labels, final_medoids, medoids_row_index_init = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
+    return (labels, final_medoids, medoids_row_index_init)
 
 def randomize(data, NUMBER_OF_CLUSTER):
     labels = randomize_core.calculate(data, NUMBER_OF_CLUSTER)    
