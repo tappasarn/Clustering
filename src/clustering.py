@@ -11,25 +11,16 @@ import khistograms_core
 
 def kmedoids(data, NUMBER_OF_CLUSTER):
     labels, final_medoids = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
-    total_entropy = entropy.calculate_entropy_simple(data, labels)
-
-    return (labels, total_entropy, final_medoids)
+    return (labels, final_medoids)
 
 def randomize(data, NUMBER_OF_CLUSTER):
-    labels = randomize_core.calculate(data, NUMBER_OF_CLUSTER)
-    total_entropy = entropy.calculate_entropy_simple(data, labels)
-    
-    return (labels, total_entropy, None)
+    labels = randomize_core.calculate(data, NUMBER_OF_CLUSTER)    
+    return (labels, None)
 
 def kmodes(data, NUMBER_OF_CLUSTER):
     labels, final_mode = kmodes_core.calculate(data, NUMBER_OF_CLUSTER)
-    total_entropy = entropy.calculate_entropy_simple(data, labels)
-
-    return (labels, total_entropy, final_mode)
+    return (labels, final_mode)
 
 def khistograms(data, NUMBER_OF_CLUSTER):
     labels, final_histogram = khistograms_core.calculate(data, NUMBER_OF_CLUSTER)
-    total_entropy = entropy.calculate_entropy_simple(data, labels)
-
-    return (labels, total_entropy, final_histogram)  
-
+    return (labels, final_histogram)
