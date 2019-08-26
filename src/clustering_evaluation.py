@@ -18,8 +18,8 @@ def SSE_distances(data, labels, pair_wise_distances):
         cluster_size = len(indices)
         
         clusters_pair_distances = pair_wise_distances[np.ix_(indices, indices)]
-        np.power(clusters_pair_distances, 2)
-        SSE_temp = SSE_temp + np.sum(clusters_pair_distances) / cluster_size
+        power_two = np.power(clusters_pair_distances, 2)
+        SSE_temp = SSE_temp + np.sum(power_two) / cluster_size / 2
         
     return SSE_temp
 

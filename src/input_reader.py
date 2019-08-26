@@ -13,6 +13,13 @@ def read_csv_input(file_name):
     # Transform input to binary
     return input_transformer.transformed_data(df.values)[0]
 
+def read_csv_input_bin(file_name):
+    # Read data from file
+    df = pd.read_csv(file_name, sep=',',header=0)
+
+    # Transform input to binary
+    return input_transformer.transformed_data(df.values)[0]
+
 def _encode_string_input_to_integer(data):
     num_data, num_features = data.shape
     transformed_data = np.zeros((num_data, num_features))

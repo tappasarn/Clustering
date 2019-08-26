@@ -9,9 +9,9 @@ import randomize_core
 import kmodes_core
 import khistograms_core
 
-def kmedoids(data, NUMBER_OF_CLUSTER):
-    labels, final_medoids, medoids_row_index_init = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER)
-    return (labels, final_medoids, medoids_row_index_init)
+def kmedoids(data, NUMBER_OF_CLUSTER, x):
+    labels, final_medoids, medoids_row_index_init, pair_wise_distance = kmedoids_core.calculate(data, NUMBER_OF_CLUSTER, x)
+    return (labels, final_medoids, medoids_row_index_init, pair_wise_distance)
 
 def randomize(data, NUMBER_OF_CLUSTER):
     labels = randomize_core.calculate(data, NUMBER_OF_CLUSTER)    

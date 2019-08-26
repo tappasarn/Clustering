@@ -8,19 +8,25 @@ import kmedoids_cluster
 import pairwise_calculation
 from sklearn.metrics.pairwise import pairwise_distances
 
-def calculate(data, number_of_medoids): 
+def calculate(data, number_of_medoids, init_medoids = []): 
     # data.shape[0] return number of row
     # data.shape[1] return number of columns
     data_size, feature_size = data.shape
 
     # crate pair wise table so we will not have to do it all the time
+    #pair_wise_distance = pairwise_calculation.calculate_custom(data, 'Jaccard', 0)
     pair_wise_distance = pairwise_calculation.calculate(data)
+
+    #print(np.array_equal(pair_wise_distance, pair_wise_distance2))
 
     if number_of_medoids > data_size:
         raise Exception('Number of medoids is more than data size')
 
     # Select ramdom indices for initial representation object == number_of_medoids
-    medoids_row_index_init = np.random.choice(data_size, number_of_medoids, replace=False)
+    if len(init_medoids) == 0:
+        medoids_row_index_init = np.random.choice(data_size, number_of_medoids, replace=False)
+    else:
+        medoids_row_index_init = init_medoids
     # medoids_row_index_init = np.array([426, 550, 515, 9, 432, 854])
 
     clusters = kmedoids_cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_init, pair_wise_distance)
@@ -51,5 +57,5 @@ def calculate(data, number_of_medoids):
         # Get new clusters
         clusters = kmedoids_cluster.get_cluster(data, data_size, number_of_medoids, feature_size, medoids_row_index_current, pair_wise_distance)
         
-    return (clusters, medoids_row_index_current, medoids_row_index_init)
+    return (clusters, medoids_row_index_current, medoids_row_index_init, pair_wise_distance)
 
